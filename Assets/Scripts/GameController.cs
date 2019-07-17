@@ -10,18 +10,39 @@ public class GameController : MonoBehaviour {
 	public Text Player1ScoreText;
 	public Text Player2ScoreText;
 
-	public int Player1Score = 0;
-	public int Player2Score = 0;
+    private int player1Score = 0;
+    private int player2Score = 0;
 
-	public bool GameOver = false;
+    public bool GameOver = false;
 
-	void Start () {
+    public int Player1Score
+    {
+        get => player1Score;
+
+        set
+        {
+            player1Score = value;
+            Player1ScoreText.text = "Player 1:" + player1Score;
+        }
+    }
+
+    public int Player2Score
+    {
+        get => player2Score;
+
+        set
+        {
+            player2Score = value;
+            Player2ScoreText.text = "Player 2:" + player2Score;
+
+        }
+    }
+
+    void Start () {
 	}
 
 	void FixedUpdate () 
 	{
-		Player1ScoreText.text = "Player 1: " + Player1Score;
-		Player2ScoreText.text = "Player 2: " + Player2Score;
 		if (Player1Score == 10) {
 			Winner.SetActive(true);
 			GameOver = true;
