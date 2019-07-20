@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour {
     private int player1Score = 0;
     private int player2Score = 0;
 
+    /// <summary>
+    /// Is the game currently over or not?
+    /// </summary>
     public bool GameOver = false;
 
     public int Player1Score
