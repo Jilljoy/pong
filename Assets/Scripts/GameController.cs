@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
+    /** The maximum score a player needs to achieve before a winner is declared. */
+    private static readonly int HIGHSCORE = 10;
 
 	public GameObject Winner;
 	public Text WinnerText;
@@ -41,30 +43,33 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    void Start () {
-	}
-
-	void FixedUpdate () 
+    void FixedUpdate () 
 	{
-		if (Player1Score == 10) {
-			Winner.SetActive(true);
-			GameOver = true;
-			WinnerText.text = "Player 1 Wins. " +
-				"Press R to Restart!";
+		if (Player1Score == HIGHSCORE) {
+            PlayerWon(1);
 		}
-		if (Player2Score == 10) {
-			Winner.SetActive(true);
-			GameOver = true;
-			WinnerText.text = "Player 2 Wins." +
-				"Press R to Restart!";
+		if (Player2Score == HIGHSCORE) {
+            PlayerWon(2);
 		}
 
 		if (Input.GetKey(KeyCode.R))
 		{
-			Player1Score = 0;
-			Player2Score = 0;
-			Winner.SetActive(false);
-			GameOver = false;
+            RestartGame();
 		}
 	}
+
+    private void PlayerWon(int player)
+    {
+        GameOver = true;
+        WinnerText.text = "Player " + player + " Wins. Press R to Restart!";
+        Winner.SetActive(true);
+    }
+
+    private void RestartGame()
+    {
+        Player1Score = 0;
+        Player2Score = 0;
+        Winner.SetActive(false);
+        GameOver = false;
+    }
 }

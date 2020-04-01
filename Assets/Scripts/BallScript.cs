@@ -51,11 +51,7 @@ public class BallScript : MonoBehaviour {
 			isMoving = false;
 			gamecontroller.Player2Score += 1;
 		}
-		if (coll.gameObject.tag == "Top Wall")
-		{
-			YSpeed *= -1.0f;
-		}
-		if (coll.gameObject.tag == "Bottom Wall")
+		if (coll.gameObject.tag == "Top Wall" || coll.gameObject.tag == "Bottom Wall")
 		{
 			YSpeed *= -1.0f;
 		}
