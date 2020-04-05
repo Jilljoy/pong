@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Pong_Game_Scene.unity
+    guid: 5c38f8a05dda96b46b4ee27527295155
   m_configObjects: {}
